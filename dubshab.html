@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DUBSHAB | Cartoon Voice Artist - Sagar Narvekar</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #8a2be2;
+      --secondary: #4b0082;
+      --dark: #1a1a1a;
+      --light: #f8f8ff;
+      --accent: #ff4081;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: var(--dark);
+      color: var(--light);
+      line-height: 1.6;
+    }
+
+    header {
+      background: url('/dubshab/header.png') center/cover;
+      color: white;
+      padding: 4em 1em;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      min-height: 150px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('header-bg.jpg') center/cover;
+      opacity: 0.4;
+      z-index: -1;
+      filter: brightness(0.5) blur(1px);
+    }
+
+    header h1 {
+      font-size: 3.5em;
+      margin-bottom: 0.5em;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    }
+
+    header p {
+      font-size: 1.5em;
+      margin-top: 0;
+    }
+
+    nav {
+      background: rgba(26, 26, 26, 0.9);
+      padding: 1em;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: var(--light);
+      font-weight: bold;
+      font-size: 1.1em;
+      transition: color 0.3s;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .content {
+      padding: 3em 1em;
+      text-align: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .cartoon-img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      margin: 10px;
+      border-radius: 15px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .cartoon-img:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(138, 43, 226, 0.4);
+    }
+
+    .form-container {
+      max-width: 600px;
+      margin: auto;
+      background: rgba(30, 30, 30, 0.8);
+      padding: 2em;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      border: 1px solid var(--primary);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #444;
+      background: rgba(20, 20, 20, 0.8);
+      color: var(--light);
+      font-size: 1em;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.3);
+    }
+
+    button {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.1em;
+      font-weight: bold;
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(138, 43, 226, 0.4);
+    }
+
+    .artist-photo {
+      border-radius: 15px;
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      margin: 1em auto;
+      display: block;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      border: 3px solid var(--primary);
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .social-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(138, 43, 226, 0.4);
+    }
+
+    .social-btn i {
+      margin-right: 10px;
+      font-size: 1.2em;
+    }
+
+    .video-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 30px 0;
+    }
+
+    .video-container iframe {
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      transition: transform 0.3s;
+    }
+
+    .video-container iframe:hover {
+      transform: scale(1.03);
+    }
+
+    .character-grid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 40px 0;
+    }
+
+    h2 {
+      font-size: 2.5em;
+      margin-bottom: 1em;
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+    }
+
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--accent);
+    }
+
+    p {
+      font-size: 1.1em;
+      max-width: 800px;
+      margin: 1em auto;
+    }
+
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+      margin: 50px 0;
+      border: none;
+    }
+
+    #topBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      font-size: 1.2em;
+      cursor: pointer;
+      display: none;
+      z-index: 999;
+    }
+
+    #topBtn:hover {
+      background: var(--primary);
+    }
+
+    @media (max-width: 768px) {
+      nav a {
+        display: block;
+        margin: 10px 0;
+      }
+
+      .video-container iframe {
+        width: 100%;
+        height: 200px;
+      }
+
+      .cartoon-img {
+        width: 120px;
+        height: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+  
+  </header>
+<p style="text-align:center; color: var(--primary);">The Voice Behind Your Favorite Cartoon Characters</p>
+<nav style="justify-content:center; display:flex; flex-wrap:wrap; gap:20px;">
+  <a href="#home"><i class="fas fa-home"></i> Home</a>
+  <a href="#about"><i class="fas fa-user"></i> About</a>
+  <a href="#characters"><i class="fas fa-microphone"></i> Characters</a>
+  <a href="#contact"><i class="fas fa-calendar-check"></i> Book Now</a>
+</nav>
+
+<div id="home" class="content">
+  <div class="logo-container">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap;">
+      <img src="LOGO.JPG.jpeg" alt="Dubshab logo" class="logo" style="width:120px; height:120px; object-fit:contain;">
+      <h2 style="margin: 0;">Welcome to DUBSHAB</h2>
+    </div>
+  </div>
+  <p>Experience the magic of professional voice mimicry with iconic characters like Doraemon, Shin Chan, Nobita, Motu Patlu, and Chhota Bheem!</p>
+  <div class="video-container">
+    <iframe width="360" height="215" src="https://www.youtube.com/embed/YB9evcVmqII" frameborder="0" allowfullscreen></iframe>
+    <iframe width="360" height="215" src="https://www.youtube.com/embed/QFK27BT8Ipo" frameborder="0" allowfullscreen></iframe>
+    <iframe width="360" height="215" src="https://www.youtube.com/embed/Wgiabi0Ugs8" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div id="characters" class="content">
+  <h2>Iconic Characters</h2>
+  <p>Sagar brings these beloved characters to life with unmatched precision and humor.</p>
+  <div class="character-grid">
+    <img src="doremon.jpg.jpeg" alt="Doraemon" class="cartoon-img">
+    <img src="shin.jpg" alt="Shinchan" class="cartoon-img">
+    <img src="nobita.jpg" alt="Nobita" class="cartoon-img">
+    <img src="motu patlu.jpg" alt="Motu Patlu" class="cartoon-img">
+    <img src="chota bheem.jpg" alt="Chhota Bheem" class="cartoon-img">
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div id="about" class="content">
+  <h2>About the Artist</h2>
+  <img src="sagar1.jpg" alt="Sagar Narvekar" class="artist-photo">
+  <div style="text-align:center;">
+    <a href="https://www.youtube.com/@SagarNarvekarDubshab" target="_blank" class="social-btn">
+      <i class="fab fa-youtube"></i> YouTube Channel
+    </a>
+    <a href="https://www.instagram.com/sagarnarvekardubshab" target="_blank" class="social-btn">
+      <i class="fab fa-instagram"></i> Instagram
+    </a>
+  </div>
+  <p>Sagar Narvekar is an exceptionally talented voice artist who has captivated audiences for over a decade with his incredible ability to mimic beloved cartoon characters. With more than 10 years of professional experience, Sagar brings life to characters like Doraemon, Shin Chan, Nobita, Motu Patlu, and Chhota Bheem with unmatched precision and humor.</p>
+  <p>His passion for dubbing and performing started in childhood and grew into a full-fledged career, making him one of the most versatile and entertaining voice artists in the industry. Sagar's performances are known for their energy, authenticity, and ability to connect with audiences of all ages.</p>
+</div>
+
+<hr class="section-divider">
+
+<div id="contact" class="content">
+  <h2>Book Sagar for Your Event</h2>
+  <p>Make your birthday parties, concerts, and shows unforgettable with live cartoon voice mimicry!</p>
+  <div class="form-container">
+    <form id="bookingForm" action="https://formspree.io/f/your-form-id" method="POST" onsubmit="return sendBoth(event)">
+      <input type="text" id="name" name="name" placeholder="Your Name" required>
+      <input type="email" id="email" name="email" placeholder="Your Email" required>
+      <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+      <textarea id="details" name="details" placeholder="Event Details (Date, Type, Venue, etc.)" rows="5" required></textarea>
+      <button type="submit"><i class="fab fa-whatsapp"></i> Book via WhatsApp</button>
+    </form>
+  </div>
+</div>
+
+<footer style="background: rgba(20, 20, 20, 0.9); padding: 2em; text-align: center; margin-top: 50px;">
+  <p>© 2025 DUBSHAB - Sagar Narvekar | Professional Voice Artist</p>
+  <p>
+    <a href="mailto:contact@dubshab.com" style="color: var(--primary); text-decoration: none;">contact@dubshab.com</a> |
+    <a href="tel:+918454922891" style="color: var(--primary); text-decoration: none;">+91 84549 22891</a>
+  </p>
+</footer>
+
+<button onclick="scrollToTop()" id="topBtn" title="Go to top">↑</button>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+
+  window.onscroll = function() {
+    document.getElementById("topBtn").style.display = window.scrollY > 100 ? "block" : "none";
+  };
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function sendBoth(event) {
+    event.preventDefault();
+
+    const form = document.getElementById("bookingForm");
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const details = document.getElementById("details").value;
+
+    const message = `Hello, I'm ${name}.\nEmail: ${email}\nPhone: ${phone}\nI'd like to book Sagar for an event.\nDetails: ${details}`;
+    const whatsappURL = "https://wa.me/918454922891?text=" + encodeURIComponent(message);
+
+    fetch(form.action, {
+      method: "POST",
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    }).then(response => {
+      if (response.ok) {
+        window.open(whatsappURL, "_blank");
+        alert("Booking details sent via email and WhatsApp!");
+        form.reset();
+      } else {
+        alert("Email failed to send. WhatsApp will still open.");
+        window.open(whatsappURL, "_blank");
+      }
+    }).catch(() => {
+      alert("Something went wrong. WhatsApp will still open.");
+      window.open(whatsappURL, "_blank");
+    });
+
+    return false;
+  }
+</script>
+</html>
